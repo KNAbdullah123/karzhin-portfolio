@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IT portfolio showcasing software development, networking, cybersecurity, and research projects." />
+  <title>Karzhin — IT Portfolio</title>
+  <style>
+    :root {
+      --bg: #0a0d14; --panel: #111722; --panel2: #151e2c; --text: #eef3fb;
+      --muted: #9aa8bb; --line: rgba(255,255,255,.10); --accent: #77e0c1;
+      --accent2: #8ab4ff; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: radial-gradient(ellipse at 80% 0%, #17283a 0, transparent 38%), var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(18px); background: rgba(10,13,20,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; gap: 24px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: var(--accent); }
+    .hero { padding: 100px 0 82px; display: grid; grid-template-columns: 1.4fr .8fr; align-items: center; gap: 56px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .18em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(3rem, 7vw, 5.8rem); line-height: .99; letter-spacing: -.07em; margin: 18px 0 24px; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .lead { color: var(--muted); font-size: 1.15rem; max-width: 660px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .btn { padding: 12px 18px; border: 1px solid var(--line); border-radius: 10px; font-weight: 700; font-size: .92rem; }
+    .btn.primary { background: var(--accent); color: #07120f; border-color: var(--accent); }
+    .btn:hover { transform: translateY(-2px); transition: .2s; }
+    .hero-card { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(119,224,193,.12), rgba(138,180,255,.06)); border-radius: 22px; padding: 26px; }
+    .terminal { background: #080c12; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .terminal-top { padding: 12px 15px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+    .dots { display: inline-flex; gap: 5px; margin-right: 9px; }
+    .dots i { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: #64748b; }
+    pre { margin: 0; padding: 20px; color: #c4d5e8; font: .88rem/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; }
+    .green { color: var(--accent); } .blue { color: var(--accent2); }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 30px; }
+    h2 { margin: 8px 0 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.055em; line-height: 1.1; }
+    .section-note { max-width: 390px; color: var(--muted); font-size: .94rem; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; min-height: 250px; }
+    .project:hover { border-color: rgba(119,224,193,.55); transform: translateY(-3px); transition: .2s; }
+    .project-top { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 16px; }
+    .tag { color: var(--accent); background: rgba(119,224,193,.09); border: 1px solid rgba(119,224,193,.18); padding: 4px 9px; border-radius: 99px; font-size: .72rem; font-weight: 800; white-space: nowrap; }
+    .status { color: var(--muted); font-size: .75rem; }
+    h3 { font-size: 1.22rem; letter-spacing: -.025em; margin: 0 0 10px; }
+    .project p { color: var(--muted); margin: 0 0 18px; font-size: .94rem; }
+    .stack { color: #c7d5e6; font-size: .78rem; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+    .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .skill { background: var(--panel); border: 1px solid var(--line); padding: 18px; border-radius: 13px; }
+    .skill strong { display: block; margin-bottom: 6px; }
+    .skill span { color: var(--muted); font-size: .84rem; }
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+    .about p { color: var(--muted); margin-top: 0; }
+    .callout { border-left: 2px solid var(--accent); padding: 5px 0 5px 20px; color: #d8e4f1; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .85rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 70px 0 60px; gap: 32px; }
+      .grid, .about { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: repeat(2, 1fr); }
+      .section-head { display: block; }
+      .section-note { margin-top: 12px; }
+      .navlinks { gap: 12px; font-size: .8rem; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      nav { min-height: 64px; } .navlinks { gap: 9px; }
+      .navlinks a:nth-child(2) { display: none; }
+      .skills { grid-template-columns: 1fr 1fr; }
+      .project { padding: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#home">KARZHIN<span>.</span></a>
+        <div class="navlinks">
+          <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#about">About</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home" style="border:0">
+        <div>
+          <div class="eyebrow">IT Student · Developer · Researcher</div>
+          <h1>Building ideas<br />into <em>technology.</em></h1>
+          <p class="lead">I’m an IT student interested in software development, computer networks, cybersecurity, and practical technology research. This portfolio brings together selected coursework, prototypes, and research work.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore my work</a>
+            <a class="btn" href="#about">About me</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="terminal">
+            <div class="terminal-top"><span class="dots"><i></i><i></i><i></i></span>karzhin@portfolio:~</div>
+            <pre><span class="green">$</span> whoami
+IT student &amp; builder
+
+<span class="green">$</span> interests
+<span class="blue">[</span> software development
+  networking
+  cybersecurity
+  wireless systems <span class="blue">]</span>
+
+<span class="green">$</span> current_focus
+LoRa spectrum hopping</pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-head">
+          <div><div class="eyebrow">Selected work</div><h2>Projects &amp; research</h2></div>
+          <p class="section-note">A selection of IT-related projects discussed, developed, or studied so far. Work-in-progress items are labelled clearly.</p>
+        </div>
+        <div class="grid">
+          <article class="project">
+            <div class="project-top"><span class="tag">Wireless research</span><span class="status">In progress</span></div>
+            <h3>LoRa-Based Spectrum Hopping</h3>
+            <p>Final-year research direction exploring how a LoRa communication system could respond to interference by changing operating frequencies. The proposed study includes collecting radio measurements with transmitter and receiver hardware in different environments, then evaluating a data-driven frequency-selection approach.</p>
+            <div class="stack">Focus: LoRa · RF measurements · interference · Python · machine learning (under investigation)</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Mobile development</span><span class="status">Prototype / learning</span></div>
+            <h3>University Chat Application</h3>
+            <p>A WhatsApp/Telegram-style university messaging app concept with authentication, chat lists, calls and settings tabs, unread badges, and chat actions such as pin, reply, edit, and delete. The implementation explored Flutter, Dart, Provider, and Firebase/Firestore.</p>
+            <div class="stack">Flutter · Dart · Provider · Firebase / Firestore</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">AI / computer vision</span><span class="status">Concept / exploration</span></div>
+            <h3>AI Voice &amp; Vision Assistant</h3>
+            <p>An assistive application concept focused on describing surroundings through object detection and OCR, with spoken interaction and navigation support. Technologies explored include YOLOv8, COCO, TensorFlow Lite, and Kurdish speech technologies; Android/Kotlin was considered as the implementation platform.</p>
+            <div class="stack">Computer vision · YOLOv8 · OCR · TFLite · Android / Kotlin · speech technology</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Web development</span><span class="status">Coursework project</span></div>
+            <h3>PHP &amp; MySQL Point of Sale</h3>
+            <p>A browser-based point-of-sale system with item searching, a shopping cart, quantity controls, and receipt generation. The backend used PHP with PDO to communicate with a MySQL/MariaDB database.</p>
+            <div class="stack">PHP 8 · MySQL / MariaDB · PDO · HTML · CSS · jQuery</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Database application</span><span class="status">Coursework project</span></div>
+            <h3>Java Event Database Management System</h3>
+            <p>A multi-role event management application with user, admin, and super-admin workflows. The design separated database, model, DAO, service, and UI layers, and included event approval and venue selection.</p>
+            <div class="stack">Java · MySQL · JDBC · phpMyAdmin · layered architecture</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Networking</span><span class="status">Lab work</span></div>
+            <h3>VLAN Configuration — Cisco 2960</h3>
+            <p>A networking lab configuring separate VLANs for Student and Staff networks on a Cisco 2960 switch, reinforcing network segmentation and basic switch configuration.</p>
+            <div class="stack">Cisco 2960 · VLAN 10 · VLAN 20 · switching fundamentals</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Linux / system administration</span><span class="status">Lab work</span></div>
+            <h3>Linux Log Monitoring</h3>
+            <p>A Linux learning project using Ubuntu in VirtualBox to monitor system log activity, practise command-line workflows, and understand how logs can help identify system events and issues.</p>
+            <div class="stack">Ubuntu Linux · VirtualBox · shell commands · system logs</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Cybersecurity</span><span class="status">Coursework / lab</span></div>
+            <h3>Classical Cryptography Lab</h3>
+            <p>Programming exercises around classical substitution techniques and the Playfair cipher, including keyword-based alphabet generation and cipher-square logic.</p>
+            <div class="stack">Python · substitution cipher · Playfair cipher · cryptography fundamentals</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Cybersecurity research</span><span class="status">Academic report</span></div>
+            <h3>OSINT &amp; Cross-Platform Correlation</h3>
+            <p>An academic report exploring how publicly available usernames, profile images, and timestamps can be compared across platforms. The work emphasizes cautious interpretation and avoiding unsupported identity claims.</p>
+            <div class="stack">OSINT · open-source research · digital investigation · analytical writing</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">IT infrastructure</span><span class="status">Design / study</span></div>
+            <h3>Data Center &amp; Network Infrastructure Study</h3>
+            <p>Exploration of data-center and structured-network components, including rack PDUs, PoE access switches, uplinks, and network layout planning. AutoCAD Architecture was also explored for mapping cabling and floor layouts.</p>
+            <div class="stack">Network infrastructure · PoE · rack PDU · Huawei eKitEngine · AutoCAD</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Cloud computing</span><span class="status">Academic report</span></div>
+            <h3>Cloud Computing — “Cloud as Borrowed Intelligence”</h3>
+            <p>A coursework report idea examining cloud computing as an on-demand source of computing capabilities and services, and how organizations use remote infrastructure instead of owning every resource locally.</p>
+            <div class="stack">Cloud computing · infrastructure · service models · technical writing</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="tag">Wireless / academic reading</span><span class="status">Literature review</span></div>
+            <h3>LoRa Preamble Detection &amp; Synchronization Review</h3>
+            <p>A review of a research thesis on LoRa preamble detection and synchronization under noise, focusing on chirp-correlation techniques, MATLAB simulation, limitations, and the value of validating algorithms on physical devices.</p>
+            <div class="stack">LoRa · synchronization · chirp correlation · MATLAB · research evaluation</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head">
+          <div><div class="eyebrow">Technical toolkit</div><h2>Areas I work with</h2></div>
+          <p class="section-note">These reflect technologies and concepts covered in projects or learning discussions—not a claim of expert-level proficiency.</p>
+        </div>
+        <div class="skills">
+          <div class="skill"><strong>Programming</strong><span>Java · PHP · Python · Dart</span></div>
+          <div class="skill"><strong>Web &amp; databases</strong><span>HTML · CSS · JavaScript/jQuery · MySQL</span></div>
+          <div class="skill"><strong>Mobile</strong><span>Flutter · Firebase · Android concepts</span></div>
+          <div class="skill"><strong>Networking</strong><span>TCP/IP · VLANs · switching · network design</span></div>
+          <div class="skill"><strong>Systems</strong><span>Linux · Ubuntu · VirtualBox</span></div>
+          <div class="skill"><strong>Cybersecurity</strong><span>OSINT · classical cryptography</span></div>
+          <div class="skill"><strong>AI exploration</strong><span>YOLOv8 · OCR · TensorFlow Lite</span></div>
+          <div class="skill"><strong>Wireless research</strong><span>LoRa · RF · interference · spectrum hopping</span></div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <div><div class="eyebrow">A little about me</div><h2>Curious by practice.</h2></div>
+        </div>
+        <div class="about">
+          <div>
+            <p>I’m an Information Technology student at Tishk International University, currently in my final year. My learning has involved building small applications, configuring networks, working with databases and Linux, and studying cybersecurity and wireless communication.</p>
+            <p>I enjoy understanding how systems work—not only using tools, but also learning the ideas behind them and testing them through practical projects.</p>
+          </div>
+          <div class="callout">
+            My current academic focus is a LoRa-based spectrum-hopping research direction. I’m developing the technical background and narrowing down a practical experiment for measuring and responding to wireless interference.
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> Karzhin · IT Portfolio</span>
+      <span>Built with HTML, CSS &amp; JavaScript</span>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
